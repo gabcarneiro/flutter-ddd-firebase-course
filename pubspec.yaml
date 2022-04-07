@@ -42,7 +42,7 @@ dependencies:
 dev_dependencies:
   auto_route_generator: ^0.6.10
   build_runner: null
-  freezed: ^0.12.2
+  freezed: ^0.12.7
   injectable_generator: ^1.0.4
   json_serializable: ^3.3.0
   lint: ^1.2.0
