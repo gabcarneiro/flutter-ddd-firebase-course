@@ -1,3 +1,6 @@
+# Intention
+The idea of forking this repo is for adding tests for everything possible in order to practice unit and widget testing :)
+
 # Domain-Driven Design + Firebase Flutter Course
 
 ### The whole accompanying tutorial series is available at :point_right: [this link](https://resocoder.com/flutter-firebase-ddd-course) :point_left:.
