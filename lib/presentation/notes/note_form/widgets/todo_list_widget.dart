@@ -43,7 +43,7 @@ class TodoList extends StatelessWidget {
             onReorderFinished: (item, from, to, newItems) {
               context.formTodos = newItems.toImmutableList();
               context
-                  .bloc<NoteFormBloc>()
+                  .read<NoteFormBloc>()
                   .add(NoteFormEvent.todosChanged(context.formTodos));
             },
             itemBuilder: (context, itemAnimation, item, index) {
@@ -96,7 +96,7 @@ class TodoTile extends HookWidget {
           onTap: () {
             context.formTodos = context.formTodos.minusElement(todo);
             context
-                .bloc<NoteFormBloc>()
+                .read<NoteFormBloc>()
                 .add(NoteFormEvent.todosChanged(context.formTodos));
           },
         ),
@@ -122,7 +122,7 @@ class TodoTile extends HookWidget {
                         : listTodo,
                   );
                   context
-                      .bloc<NoteFormBloc>()
+                      .read<NoteFormBloc>()
                       .add(NoteFormEvent.todosChanged(context.formTodos));
                 },
               ),
@@ -144,12 +144,12 @@ class TodoTile extends HookWidget {
                         : listTodo,
                   );
                   context
-                      .bloc<NoteFormBloc>()
+                      .read<NoteFormBloc>()
                       .add(NoteFormEvent.todosChanged(context.formTodos));
                 },
                 validator: (_) {
                   return context
-                      .bloc<NoteFormBloc>()
+                      .read<NoteFormBloc>()
                       .state
                       .note
                       .todos

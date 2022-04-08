@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flushbar/flushbar.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +28,7 @@ class SignInForm extends StatelessWidget {
             (_) {
               ExtendedNavigator.of(context).replace(Routes.notesOverviewPage);
               context
-                  .bloc<AuthBloc>()
+                  .read<AuthBloc>()
                   .add(const AuthEvent.authCheckRequested());
             },
           ),
@@ -56,10 +55,10 @@ class SignInForm extends StatelessWidget {
                 ),
                 autocorrect: false,
                 onChanged: (value) => context
-                    .bloc<SignInFormBloc>()
+                    .read<SignInFormBloc>()
                     .add(SignInFormEvent.emailChanged(value)),
                 validator: (_) => context
-                    .bloc<SignInFormBloc>()
+                    .read<SignInFormBloc>()
                     .state
                     .emailAddress
                     .value
@@ -80,10 +79,10 @@ class SignInForm extends StatelessWidget {
                 autocorrect: false,
                 obscureText: true,
                 onChanged: (value) => context
-                    .bloc<SignInFormBloc>()
+                    .read<SignInFormBloc>()
                     .add(SignInFormEvent.passwordChanged(value)),
                 validator: (_) =>
-                    context.bloc<SignInFormBloc>().state.password.value.fold(
+                    context.read<SignInFormBloc>().state.password.value.fold(
                           (f) => f.maybeMap(
                             shortPassword: (_) => 'Short Password',
                             orElse: () => null,
@@ -97,7 +96,7 @@ class SignInForm extends StatelessWidget {
                   Expanded(
                     child: FlatButton(
                       onPressed: () {
-                        context.bloc<SignInFormBloc>().add(
+                        context.read<SignInFormBloc>().add(
                               const SignInFormEvent
                                   .signInWithEmailAndPasswordPressed(),
                             );
@@ -108,7 +107,7 @@ class SignInForm extends StatelessWidget {
                   Expanded(
                     child: FlatButton(
                       onPressed: () {
-                        context.bloc<SignInFormBloc>().add(
+                        context.read<SignInFormBloc>().add(
                               const SignInFormEvent
                                   .registerWithEmailAndPasswordPressed(),
                             );
@@ -121,7 +120,7 @@ class SignInForm extends StatelessWidget {
               RaisedButton(
                 onPressed: () {
                   context
-                      .bloc<SignInFormBloc>()
+                      .read<SignInFormBloc>()
                       .add(const SignInFormEvent.signInWithGooglePressed());
                 },
                 color: Colors.lightBlue,
