@@ -58,7 +58,7 @@ class NotesOverviewPage extends StatelessWidget {
           appBar: AppBar(
             title: const Text('Notes'),
             leading: IconButton(
-              icon: Icon(Icons.exit_to_app),
+              icon: const Icon(Icons.exit_to_app),
               onPressed: () {
                 context.bloc<AuthBloc>().add(const AuthEvent.signedOut());
               },
@@ -72,7 +72,7 @@ class NotesOverviewPage extends StatelessWidget {
             onPressed: () {
               ExtendedNavigator.of(context).pushNoteFormPage(editedNote: null);
             },
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add),
           ),
         ),
       ),

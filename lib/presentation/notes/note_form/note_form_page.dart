@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flushbar/flushbar.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -127,7 +126,7 @@ class NoteFormPageScaffold extends StatelessWidget {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.check),
+            icon: const Icon(Icons.check),
             onPressed: () {
               context.bloc<NoteFormBloc>().add(const NoteFormEvent.saved());
             },
@@ -145,11 +144,11 @@ class NoteFormPageScaffold extends StatelessWidget {
                   : AutovalidateMode.disabled,
               child: SingleChildScrollView(
                 child: Column(
-                  children: [
-                    const BodyField(),
-                    const ColorField(),
-                    const TodoList(),
-                    const AddTodoTile(),
+                  children: const [
+                    BodyField(),
+                    ColorField(),
+                    TodoList(),
+                    AddTodoTile(),
                   ],
                 ),
               ),

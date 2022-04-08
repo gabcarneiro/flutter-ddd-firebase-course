@@ -14,7 +14,6 @@ class CriticalFailureDisplay extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           const Text(
             '😱',
@@ -28,8 +27,9 @@ class CriticalFailureDisplay extends StatelessWidget {
             style: const TextStyle(fontSize: 24),
             textAlign: TextAlign.center,
           ),
-          FlatButton(
+          TextButton(
             onPressed: () {
+              // ignore: avoid_print
               print('Sending email!');
             },
             child: Row(

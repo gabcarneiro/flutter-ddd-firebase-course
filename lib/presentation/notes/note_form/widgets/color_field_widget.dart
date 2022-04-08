@@ -13,7 +13,7 @@ class ColorField extends StatelessWidget {
     return BlocBuilder<NoteFormBloc, NoteFormState>(
       buildWhen: (p, c) => p.note.color != c.note.color,
       builder: (context, state) {
-        return Container(
+        return SizedBox(
           height: 80,
           child: ListView.separated(
             padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -39,7 +39,7 @@ class ColorField extends StatelessWidget {
                           : BorderSide.none,
                     ),
                   ),
-                  child: Container(
+                  child: const SizedBox(
                     width: 50,
                     height: 50,
                   ),

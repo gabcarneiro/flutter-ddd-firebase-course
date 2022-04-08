@@ -37,7 +37,7 @@ class TodoList extends StatelessWidget {
         builder: (context, formTodos, child) {
           return ImplicitlyAnimatedReorderableList<TodoItemPrimitive>(
             shrinkWrap: true,
-            removeDuration: const Duration(),
+            removeDuration: Duration.zero,
             items: formTodos.value.asList(),
             areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
             onReorderFinished: (item, from, to, newItems) {
@@ -131,7 +131,7 @@ class TodoTile extends HookWidget {
               ),
               title: TextFormField(
                 controller: textEditingController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Todo',
                   counterText: '',
                   border: InputBorder.none,

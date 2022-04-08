@@ -5,7 +5,6 @@ import 'package:notes_firebase_ddd_course/application/auth/auth_bloc.dart';
 import 'package:notes_firebase_ddd_course/injection.dart';
 import 'package:notes_firebase_ddd_course/presentation/routes/router.gr.dart'
     as app_router;
-import 'package:notes_firebase_ddd_course/presentation/sign_in/sign_in_page.dart';
 
 class AppWidget extends StatelessWidget {
   @override
