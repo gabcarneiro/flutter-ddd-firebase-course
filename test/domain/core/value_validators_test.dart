@@ -94,4 +94,36 @@ void main() {
       },
     );
   });
+
+  group('validatePassword', () {
+    test(
+      'should return [Right] with of value of input '
+      'when input lenght is equals to 6 characters',
+      () {
+        final result = validatePassword('passwo');
+
+        expect(result, const Right('passwo'));
+      },
+    );
+
+    test(
+      'should return [Right] with of value of input '
+      'when input lenght is greater than 6 characters',
+      () {
+        final result = validatePassword('password');
+
+        expect(result, const Right('password'));
+      },
+    );
+
+    test(
+      'should return [Left] with of value of [ShortPassword] containing the input '
+      'when input lenght is lesser than 6 characters',
+      () {
+        final result = validatePassword('passw');
+
+        expect(result, const Left(ShortPassword(failedValue: 'passw')));
+      },
+    );
+  });
 }
