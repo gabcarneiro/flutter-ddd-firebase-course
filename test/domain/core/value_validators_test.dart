@@ -6,7 +6,7 @@ import 'package:notes_firebase_ddd_course/domain/core/value_validators.dart';
 void main() {
   group('validateMaxStringLength', () {
     test(
-      'should return right with string input '
+      'should return right with value of input '
       'when input string lenght is lesser than maxLenght',
       () {
         final result = validateMaxStringLength('string', 7);
@@ -16,7 +16,7 @@ void main() {
     );
 
     test(
-      'should return right with string input '
+      'should return right with value of input '
       'when input string lenght is equals to maxLenght',
       () {
         final result = validateMaxStringLength('string', 6);
@@ -26,7 +26,7 @@ void main() {
     );
 
     test(
-      'should return left with ExceedingLength '
+      'should return left with value of ExceedingLength '
       'when input string lenght is greater to maxLenght',
       () {
         final result = validateMaxStringLength('string', 5);
@@ -41,5 +41,9 @@ void main() {
         );
       },
     );
+  });
+
+  group('validateStringNotEmpty', () {
+    final result = validateStringNotEmpty;
   });
 }
