@@ -6,7 +6,7 @@ import 'package:notes_firebase_ddd_course/domain/core/value_validators.dart';
 void main() {
   group('validateMaxStringLength', () {
     test(
-      'should return right with value of input '
+      'should return [Right] with value of input '
       'when input string lenght is lesser than maxLenght',
       () {
         final result = validateMaxStringLength('string', 7);
@@ -16,7 +16,7 @@ void main() {
     );
 
     test(
-      'should return right with value of input '
+      'should return [Right] with value of input '
       'when input string lenght is equals to maxLenght',
       () {
         final result = validateMaxStringLength('string', 6);
@@ -26,7 +26,8 @@ void main() {
     );
 
     test(
-      'should return left with value of ExceedingLength '
+      'should return [Left] with value of [ExceedingLength] containing '
+      'the failed value '
       'when input string lenght is greater to maxLenght',
       () {
         final result = validateMaxStringLength('string', 5);
@@ -44,6 +45,25 @@ void main() {
   });
 
   group('validateStringNotEmpty', () {
-    final result = validateStringNotEmpty;
+    test(
+        'should return [Right] with value of input '
+        'when input string is NOT empty', () {
+      final result = validateStringNotEmpty('not empty');
+
+      expect(result, equals(const Right('not empty')));
+    });
+
+    test(
+      'should return [Left] with value of [Empty] containing the failed value '
+      'when input string is empty',
+      () {
+        final result = validateStringNotEmpty('');
+
+        expect(
+          result,
+          equals(const Left(Empty(failedValue: ''))),
+        );
+      },
+    );
   });
 }
