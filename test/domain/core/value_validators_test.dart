@@ -66,4 +66,32 @@ void main() {
       },
     );
   });
+
+  group('validateSingleLine', () {
+    test(
+        'should return [Right] with value of input '
+        ' when the input string does not have a line break', () {
+      final result = validateSingleLine('this is a single line string');
+
+      expect(result, equals(const Right('this is a single line string')));
+    });
+
+    test(
+      'should return [Left] with value of [Multiline] '
+      'containing the failed value '
+      'when the input string has a line break',
+      () {
+        final result = validateSingleLine('this is a multi line \n string');
+
+        expect(
+          result,
+          equals(
+            const Left(
+              Multiline(failedValue: 'this is a multi line \n string'),
+            ),
+          ),
+        );
+      },
+    );
+  });
 }
