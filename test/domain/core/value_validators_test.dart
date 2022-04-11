@@ -126,4 +126,29 @@ void main() {
       },
     );
   });
+
+  group('validateEmailAddress', () {
+    test(
+        'should retur [Right] with value of input '
+        'when the input is a valid email address ', () {
+      final result = validateEmailAddress('email@example.com');
+
+      expect(result, equals(const Right('email@example.com')));
+    });
+
+    test(
+        'should retur [Left] with value of [InvalidEmail] containing the input '
+        'when the input is not a valid email address', () {
+      final result = validateEmailAddress('emailexamplecom');
+
+      expect(
+        result,
+        equals(
+          const Left(
+            InvalidEmail(failedValue: 'emailexamplecom'),
+          ),
+        ),
+      );
+    });
+  });
 }
