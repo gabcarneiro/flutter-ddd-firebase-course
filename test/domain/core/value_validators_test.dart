@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kt_dart/collection.dart';
 import 'package:notes_firebase_ddd_course/domain/core/failures.dart';
 import 'package:notes_firebase_ddd_course/domain/core/value_validators.dart';
 
@@ -149,6 +150,35 @@ void main() {
           ),
         ),
       );
+    });
+  });
+
+  group('validateMaxListLength', () {
+    test(
+        'should return [Right] with value of input '
+        'when input list has the same size of maxLenght', () {
+      final tList = KtList.from([1, 2, 3, 4, 5]);
+      final result = validateMaxListLength(tList, 5);
+
+      expect(result, equals(Right(tList)));
+    });
+
+    test(
+        'should return [Right] with value of input '
+        'when input list size is lesser than maxLenght', () {
+      final tList = KtList.from([1, 2, 3, 4]);
+      final result = validateMaxListLength(tList, 5);
+
+      expect(result, equals(Right(tList)));
+    });
+
+    test(
+        'should return [Left] with value of '
+        'when input list size is greater than maxLenght', () {
+      final tList = KtList.from([1, 2, 3, 4, 5, 6]);
+      final result = validateMaxListLength(tList, 5);
+
+      expect(result, equals(Left(ListTooLong(failedValue: tList, max: 5))));
     });
   });
 }
